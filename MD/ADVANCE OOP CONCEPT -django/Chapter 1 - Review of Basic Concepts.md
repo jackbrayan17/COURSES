@@ -43,6 +43,9 @@ A **set** is an unordered collection of unique elements.
 ```python
 unique_numbers = {1, 2, 3, 3, 2, 1}
 print(unique_numbers)  # {1, 2, 3}
+
+s = set([1,2,3,2,3,2,2]) # creating a set from a list
+print(s)
 ```
 
 ### Dictionaries:
@@ -50,8 +53,10 @@ print(unique_numbers)  # {1, 2, 3}
 A **dictionary** stores key-value pairs.
 
 ```python
-student = {"name": "Alice", "age": 22, "grade": "A"}
-print(student["name"])  # Alice
+student = {"name": "Alice", "age": 22, "grade": "A",  
+			(1, 2): "A location"   # a dictionary with a tuple as key
+		  }
+print(student["name"], student[(1,2)])  # Alice
 ```
 
 ## 3. Functions
@@ -62,7 +67,19 @@ Functions allow code reusability.
 def greet(name):
     return f"Hello, {name}!"
 
+def square_and_cube(x):
+	return x*x, x*x*x
+
+def add_items(a,b,*args):
+	return sum([a,b,*args])
+
+def function(x="Default value"):
+	return x
+
 print(greet("John"))  # Hello, John!
+print(square_and_cube(3)) # (9, 27)
+print(add_items(2, 3, 5, 8, 2)) # 20
+print(function() + function(" has changed"))
 ```
 
 ## 4. If-Elif-Else Statements
@@ -73,6 +90,10 @@ Conditional statements control the flow of execution.
 x = 10
 if x > 10:
     print("Greater than 10")
+	if x % 4 == 0 and x > 16:
+		print("x is a multiple of 4 and greater than 16")
+	if x % 5 == 0 or x > 20:
+		print("x is either a multiple of 5 or greater than 20")![[Pasted image 20250309213130.png]]
 elif x == 10:
     print("Equal to 10")
 else:
@@ -86,6 +107,20 @@ else:
 ```python
 for i in range(5):
     print(i)  # 0, 1, 2, 3, 4
+
+new_list = [1,2,3,4]
+for item in new_list: # gets each item in the iterable
+	if stopping_condition:
+		break # keyword used to end a for loop, typically used with if statements
+	if skip:
+		continue # keyword used to skip an iteration but still continue looping
+
+# loop gets both the index of the item and the item in an iterable
+for index, number in new_list:
+	if stopping_condition:
+		break # keyword used to end a for loop, typically used with if statements
+	if skip:
+		continue # keyword used to skip an iteration but still continue looping
 ```
 
 ### While Loop:
@@ -95,6 +130,16 @@ count = 0
 while count < 5:
     print(count)
     count += 1
+
+count=0; new_list = [1,2,3,4]
+while count < len(new_list):
+	item = new_list[count]
+	count +=1
+	
+	if stopping_condition:
+		break # keyword used to end a for loop, typically used with if statements
+	if skip:
+		continue # keyword used to skip an iteration but still continue looping
 ```
 
 ## 6. Modules
