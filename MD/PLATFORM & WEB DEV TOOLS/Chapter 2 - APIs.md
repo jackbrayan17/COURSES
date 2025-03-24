@@ -33,16 +33,31 @@ HTTP is the foundation of communication for APIs on the web. It defines how requ
     - `401 Unauthorized`: Authentication required.
     - `404 Not Found`: Resource not found.
     - `500 Internal Server Error`: Server-side error.
+- **Status Code classes**:
+	- 20x: Successful
+	- 30x: Redirection
+	- 40x: Client Error
+	- 50x: Server Error
 
 ## 4. XML (Extensible Markup Language)
 
 XML is a structured, hierarchical data format used for exchanging information between applications. It was commonly used in **SOAP-based APIs**. Example:
 
 ```xml
-<user>
-    <id>1</id>
-    <name>John Doe</name>
-</user>
+<Class name="B2">
+	<Student name="Abdel Aziz" class="B">
+		<Subject name="Platform & Dev" marks=14.5 />
+	</Student>
+	<Student name="Maroc" class="B">
+		<Subject name="Platform & Dev" marks=15 />
+	</Student>
+	<Student name="Christine" class="A">
+		<Subject name="Platform & Dev" marks=11 />
+	</Student>
+	<Student name="Archange" class="A">
+		<Subject name="Platform & Dev" marks=14.5 />
+	</Student>
+</Class>
 ```
 
 ## 5. JSON (JavaScript Object Notation)
@@ -50,11 +65,22 @@ XML is a structured, hierarchical data format used for exchanging information be
 JSON is a lightweight data format used in **RESTful APIs**. It is more human-readable and efficient compared to XML. Example:
 
 ```json
-{
-    "id": 1,
-    "name": "John Doe"
-}
+[
+	{"name": "Abdel Aziz", "class": "B", "subjects": [
+		{ "name": "Platform & Dev", "marks": 14.5 }]
+	},
+	{"name": "Maroc", "class": "B", "subjects": [
+		{ "name": "Platform & Dev", "marks": 15 }]
+	},
+	{"name": "Christine", "class": "A", "subjects": [
+		{ "name": "Platform & Dev", "marks": 11 }]
+	},
+		{"name": "Archange", "class": "A", "subjects": [
+		{ "name": "Platform & Dev", "marks": 14.5 }]
+	},
+]
 ```
+
 
 ## 6. SOAP (Simple Object Access Protocol)
 
@@ -78,6 +104,8 @@ GET /users/1 HTTP/1.1
 Host: example.com
 Authorization: Bearer token123
 ```
+
+
 
 ## 8. GraphQL
 

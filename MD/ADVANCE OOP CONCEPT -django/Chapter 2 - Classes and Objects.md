@@ -29,6 +29,8 @@ An **object** is an instance of a class. It holds real data and interacts with o
 ```python
 my_car = Car("Toyota", "Corolla", 2022)
 print(my_car.display_info())  # Output: 2022 Toyota Corolla
+my_car.year = 2025
+print(my_car.display_info())  # Output: 2025 Toyota Corolla
 ```
 
 ---
@@ -64,15 +66,16 @@ Instance attributes are unique to each object. They are defined inside the `__in
 
 ```python
 class Dog:
-    def __init__(self, name, breed):
-        self.name = name  # Instance attribute
+    def __init__(self, name, breed, bark_sound):
+        self.name = name 
         self.breed = breed
+        # self.name and self.breed are instance attributes; name and breed are normal variables/parameters
 
 dog1 = Dog("Buddy", "Labrador")
 dog2 = Dog("Max", "Beagle")
 
-print(dog1.name)  # Output: Buddy
-print(dog2.name)  # Output: Max
+print(dog1.name)  # Output: Buddy Woof woof
+print(dog2.name)  # Output: Max Arf arf
 ```
 
 ### **3.2 Class Attributes**
@@ -88,15 +91,16 @@ a2 = Animal()
 
 print(a1.species)  # Output: Mammal
 print(a2.species)  # Output: Mammal
+print(Animal.species)   # Output: Mammal
 ```
 
 #### **Difference Between Class and Instance Attributes**
 
-|Feature|Instance Attribute|Class Attribute|
-|---|---|---|
-|Scope|Specific to an object|Shared across all instances|
-|Defined in|`__init__()`|Outside any method|
-|Modification|Only affects one instance|Affects all instances|
+| Feature      | Instance Attribute               | Class Attribute             |
+| ------------ | -------------------------------- | --------------------------- |
+| Scope        | Specific to an object            | Shared across all instances |
+| Defined in   | `__init__()` or any other method | Outside any method          |
+| Modification | Only affects one instance        | Affects all instances       |
 
 ---
 
@@ -112,7 +116,7 @@ class Student:
         self.name = name
         self.grade = grade
 
-    def get_details(self):
+    def get_details(self): # instance method
         return f"{self.name} is in grade {self.grade}."
 
 s1 = Student("John", 10)
@@ -134,6 +138,18 @@ class School:
 print(School.school_name)  # Output: Greenwood High
 School.change_school_name("Sunrise Academy")
 print(School.school_name)  # Output: Sunrise Academy
+```
+
+```python
+class SE3Student:
+	motto = "I will work hard, unless there's another way."
+
+	@classmethod
+	def change_motto(cls, new_motto): 
+		cls.motto = new_motto
+
+	def __init__(self, name): # instance method
+		self.name = name
 ```
 
 ### **4.3 Static Methods (`@staticmethod`)**
@@ -181,7 +197,7 @@ To define a model, create a class that inherits from `models.Model` and specify 
 ```python
 from django.db import models
 
-class Book(models.Model):
+class Book(models.Model): # inheritance
     title = models.CharField(max_length=200)  # Title of the book
     author = models.CharField(max_length=100)  # Author name
     published_date = models.DateField()  # Date of publication
@@ -231,6 +247,10 @@ book1.save()  # Saves the object to the database
 
 # Retrieving the object
 print(book1.get_book_info())  # Output: Django for Beginners by William S. Vincent
+```
+
+```
+
 ```
 
 ---
